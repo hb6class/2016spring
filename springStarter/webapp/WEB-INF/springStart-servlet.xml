@@ -4,10 +4,19 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <!-- handlerMapping -->
+<!-- 아래 bean의 name속성에 path로 컨트롤러 결정 -->
 	<bean id="handlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
+
 <!-- controller - mapping -->
 	<bean name="/main.do" class="com.hb.controller.IndexController"></bean>
+	<bean name="/main2.do" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="index"></property>
+	</bean>
+	<bean name="/list.do" class="com.hb.controller.ListController"></bean>
+	
 <!-- viewResolver -->
+<!-- 컨트롤러에게서 전달받은 view정보를 통해
+	 prefix+view+suffix를 만들어 뷰 위임 -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/"></property>
 		<property name="suffix" value=".jsp"></property>
