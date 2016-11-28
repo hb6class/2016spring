@@ -8,23 +8,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hb.util.OraDB;
+
 public class GuestDao {
 	
-	private static String url="jdbc:oracle:thin:@localhost:1521:xe";
-	private static String id="scott";
-	private static String pw="tiger";
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 
 	public GuestDao() throws Exception {
-		Class.forName("oracle.jdbc.OracleDriver");
-		conn=DriverManager.getConnection(url,id,pw);
 	}
 
 	public List selectAll() {
 		String sql="select * from guest";
 		try {
+			conn=OraDB.getConn();
 			pstmt=conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			List<GuestVo> list= new ArrayList<GuestVo>();
@@ -36,7 +34,7 @@ public class GuestDao {
 						, rs.getInt("pay")));
 			}
 			return list;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 				try {
@@ -48,6 +46,28 @@ public class GuestDao {
 				}
 		}
 		return null;
+	}
+
+	public void insertOne(GuestVo bean) {
+		String sql="insert into guest values (?,?,sysdate,?)";
+		try {
+			conn=OraDB.getConn();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, bean.getSabun());
+			pstmt.setString(2, bean.getName());
+			pstmt.setInt(3, bean.getPay());
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+	}
+		
 	}
 
 }

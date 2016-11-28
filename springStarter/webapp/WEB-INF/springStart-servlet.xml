@@ -3,6 +3,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+<!-- dao 객체 생성 -->
+	<!-- GuestDao dao = new GuestDao() -->
+	<bean id="dao" class="com.hb.model.GuestDao"></bean>
+
 <!-- handlerMapping -->
 <!-- 아래 bean의 name속성에 path로 컨트롤러 결정 -->
 	<bean id="handlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
@@ -12,7 +16,13 @@
 	<bean name="/main2.do" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
 		<property name="viewName" value="index"></property>
 	</bean>
-	<bean name="/list.do" class="com.hb.controller.ListController"></bean>
+	<bean name="/list.do" class="com.hb.controller.ListController">
+		<property name="dao" ref="dao"></property>
+	</bean>
+	<bean name="/add.do" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="guest/addform"></property>
+	</bean>
+	<bean name="/insert.do" class="com.hb.controller.AddController"></bean>
 	
 <!-- viewResolver -->
 <!-- 컨트롤러에게서 전달받은 view정보를 통해

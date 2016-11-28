@@ -11,14 +11,18 @@ import org.springframework.web.servlet.mvc.Controller;
 import com.hb.model.GuestDao;
 
 public class ListController implements Controller {
+	private GuestDao dao;
+	public void setDao(GuestDao dao) {
+		this.dao = dao;
+	}
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest req,
 			HttpServletResponse res) throws Exception {
-		GuestDao dao = new GuestDao();
 		List list =dao.selectAll();
-		req.setAttribute("alist", list);
+//		req.setAttribute("alist", list);
 		ModelAndView mav= new ModelAndView();
+		mav.addObject("alist", list);
 		mav.setViewName("guest/list");
 		return mav;
 	}

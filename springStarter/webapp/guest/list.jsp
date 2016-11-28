@@ -25,5 +25,6 @@
 		</tr>
 	</c:forEach>
 	</table>
+	<p><a href="add.do">입력</a></p>
 </body>
 </html>
