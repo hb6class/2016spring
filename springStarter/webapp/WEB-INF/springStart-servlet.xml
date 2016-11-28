@@ -28,6 +28,12 @@
 	<bean name="/detail.do" class="com.hb.controller.DetailController">
 		<property name="dao" ref="dao"></property>
 	</bean>
+	<bean name="/edit.do" class="com.hb.controller.EditController">
+		<property name="dao" ref="dao"></property>
+	</bean>
+	<bean name="/update.do" class="com.hb.controller.EditController">
+		<property name="dao" ref="dao"></property>
+	</bean>
 	
 <!-- viewResolver -->
 <!-- 컨트롤러에게서 전달받은 view정보를 통해
