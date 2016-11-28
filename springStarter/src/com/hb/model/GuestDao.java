@@ -119,4 +119,24 @@ public class GuestDao {
 		
 	}
 
+	public void deleteOne(int sabun) {
+		String sql="delete from guest where sabun=?";
+		try {
+			conn=OraDB.getConn();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, sabun);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+	}
+		
+	}
+
 }
