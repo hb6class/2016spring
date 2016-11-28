@@ -10,12 +10,15 @@ import com.hb.model.GuestDao;
 import com.hb.model.GuestVo;
 
 public class AddController implements Controller {
+	GuestDao dao;
+	public AddController(GuestDao dao) {
+		this.dao = dao;
+	}
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest req,
 			HttpServletResponse arg1) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		GuestDao dao = new GuestDao();
 		GuestVo bean = new GuestVo(
 				Integer.parseInt(req.getParameter("sabun"))
 				, req.getParameter("name"), null

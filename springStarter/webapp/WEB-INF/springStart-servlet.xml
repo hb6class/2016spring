@@ -6,13 +6,13 @@
 <!-- dao 객체 생성 -->
 	<!-- GuestDao dao = new GuestDao() -->
 	<bean id="dao" class="com.hb.model.GuestDao"></bean>
-
+	
 <!-- handlerMapping -->
 <!-- 아래 bean의 name속성에 path로 컨트롤러 결정 -->
 	<bean id="handlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
 
 <!-- controller - mapping -->
-	<bean name="/main.do" class="com.hb.controller.IndexController"></bean>
+	<bean name="/main.do" class="com.hb.controller.IndexController" ></bean>
 	<bean name="/main2.do" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
 		<property name="viewName" value="index"></property>
 	</bean>
@@ -22,7 +22,12 @@
 	<bean name="/add.do" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
 		<property name="viewName" value="guest/addform"></property>
 	</bean>
-	<bean name="/insert.do" class="com.hb.controller.AddController"></bean>
+	<bean name="/insert.do" class="com.hb.controller.AddController">
+		<constructor-arg ref="dao"></constructor-arg>
+	</bean>
+	<bean name="/detail.do" class="com.hb.controller.DetailController">
+		<property name="dao" ref="dao"></property>
+	</bean>
 	
 <!-- viewResolver -->
 <!-- 컨트롤러에게서 전달받은 view정보를 통해
