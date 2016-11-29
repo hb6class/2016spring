@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- handlerMapping -->
+<bean id="handlerMapping" 
+class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
+
+<!-- controller -->
+<bean name="/main.do" 
+class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+	<property name="viewName" value="index"></property>
+</bean>
+
+
+<!-- viewResolver -->
+<bean id="viewResolver" 
+class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<property name="prefix" value="/"></property>
+	<property name="suffix" value=".jsp"></property>
+</bean>
+
+</beans>
