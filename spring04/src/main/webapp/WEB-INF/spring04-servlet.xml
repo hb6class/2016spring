@@ -3,12 +3,18 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+<!-- dao bean -->
+<bean id="userDao" class="com.user.model.UserDao"></bean>
+<bean id="guestDao" class="com.guest.model.GuestDao"></bean>
+
 <!-- handlerMapping -->
 <bean id="handlerMapping" 
 class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 	<property name="mappings">
 		<props>
 			<prop key="/login.do">login</prop>
+			<prop key="/result.do">loginResult</prop>
+			<prop key="/bbs/list.do">guestlist</prop>
 		</props>
 	</property>
 </bean>
@@ -17,6 +23,12 @@ class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 <bean name="login"
 class="org.springframework.web.servlet.mvc.ParameterizableViewController">
 	<property name="viewName" value="user/login"></property>
+</bean>
+<bean name="loginResult" class="com.user.controller.LoginController">
+	<property name="dao" ref="userDao"></property>
+</bean>
+<bean name="guestlist" class="com.guest.controller.ListController">
+	<property name="dao" ref="guestDao"></property>
 </bean>
 
 

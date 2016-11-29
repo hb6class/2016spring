@@ -5,9 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	.err{
+		text-align: center;
+		color: red;
+	}
+</style>
 </head>
 <body>
 	<h1>로그인 페이지</h1>
+	<div class="err">${errMsg }</div>
 	<form action="result.do">
 		<p>
 			<label for="id">id:</label>

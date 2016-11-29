@@ -8,6 +8,7 @@
 </head>
 <body>
 <h2>Hello World!</h2>
-<a href="login.do">로그인 페이지</a>
+<p><a href="login.do">로그인 페이지</a></p>
+<p><a href="bbs/list.do">리스트 바로가기</a></p>
 </body>
 </html>
