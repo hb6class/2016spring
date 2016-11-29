@@ -5,10 +5,16 @@
 
 <!-- handlerMapping -->
 <bean id="handlerMapping" 
-class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
+class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	<property name="mappings">
+		<props>
+			<prop key="/main.do">idx</prop>
+		</props>
+	</property>
+</bean>
 
 <!-- controller -->
-<bean name="/main.do" 
+<bean name="idx"
 class="org.springframework.web.servlet.mvc.ParameterizableViewController">
 	<property name="viewName" value="index"></property>
 </bean>
