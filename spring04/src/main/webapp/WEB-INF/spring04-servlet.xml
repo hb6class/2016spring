@@ -8,15 +8,15 @@
 class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 	<property name="mappings">
 		<props>
-			<prop key="/main.do">idx</prop>
+			<prop key="/login.do">login</prop>
 		</props>
 	</property>
 </bean>
 
 <!-- controller -->
-<bean name="idx"
+<bean name="login"
 class="org.springframework.web.servlet.mvc.ParameterizableViewController">
-	<property name="viewName" value="index"></property>
+	<property name="viewName" value="user/login"></property>
 </bean>
 
 
