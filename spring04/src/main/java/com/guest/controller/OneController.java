@@ -11,8 +11,12 @@ import com.guest.model.GuestVo;
 
 public class OneController extends AbstractController {
 	private GuestDao dao;
+	private String page;
 	public void setDao(GuestDao dao) {
 		this.dao = dao;
+	}
+	public void setPage(String page) {
+		this.page = page;
 	}
 	
 	@Override
@@ -21,8 +25,8 @@ public class OneController extends AbstractController {
 		ModelAndView mav= new ModelAndView();
 		String param=req.getParameter("idx");
 		int sabun = Integer.parseInt(param);
-		mav.addObject("bean", dao.selectOne(sabun));
-		mav.setViewName("guest/detail");
+		mav.addObject("dto", dao.selectOne(sabun));
+		mav.setViewName("guest/"+page);
 		return mav;
 	}
 
