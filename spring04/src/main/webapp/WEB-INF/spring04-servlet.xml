@@ -20,6 +20,7 @@ class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 			<prop key="/bbs/detail.do">guestDetail</prop>
 			<prop key="/bbs/edit.do">guestEdit</prop>
 			<prop key="/bbs/update.do">guestUpdate</prop>
+			<prop key="/bbs/del.do">guestDelete</prop>
 			
 		</props>
 	</property>
@@ -55,6 +56,9 @@ class="org.springframework.web.servlet.mvc.ParameterizableViewController">
 <bean name="guestUpdate" class="com.guest.controller.UpdateController">
 	<property name="commandClass" value="com.guest.model.GuestVo"></property>	
 	<property name="dao" ref="guestDao"></property>	
+</bean>
+<bean name="guestDelete" class="com.guest.controller.DeleteController">
+	<property name="dao" ref="guestDao"></property> 	
 </bean>
 
 <!-- viewResolver -->
