@@ -15,6 +15,9 @@ class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 			<prop key="/login.do">login</prop>
 			<prop key="/result.do">loginResult</prop>
 			<prop key="/bbs/list.do">guestlist</prop>
+			<prop key="/bbs/add.do">guestAdd</prop>
+			<prop key="/bbs/insert.do">guestInsert</prop>
+			
 		</props>
 	</property>
 </bean>
@@ -28,6 +31,14 @@ class="org.springframework.web.servlet.mvc.ParameterizableViewController">
 	<property name="dao" ref="userDao"></property>
 </bean>
 <bean name="guestlist" class="com.guest.controller.ListController">
+	<property name="dao" ref="guestDao"></property>
+</bean>
+<bean name="guestAdd" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+	<property name="viewName" value="guest/form"></property>
+</bean>
+<bean name="guestInsert" class="com.guest.controller.InsertController">
+	<property name="commandClass" value="com.guest.model.GuestVo"></property>
+	<property name="commandName" value="guestVo"></property>
 	<property name="dao" ref="guestDao"></property>
 </bean>
 

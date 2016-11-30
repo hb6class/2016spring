@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.Controller;
 
 import com.guest.model.GuestDao;
 import com.guest.model.GuestVo;
+import com.user.model.LoginBean;
 
 public class ListController implements Controller {
 	private GuestDao dao;
