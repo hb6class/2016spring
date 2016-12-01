@@ -36,6 +36,12 @@ public class GuestDao {
 		return list;
 	}
 
+	public void insertOne(GuestVo bean) {
+		String sql="insert into guest values (?,?,sysdate,?)";
+		Object[] obj ={bean.getSabun(),bean.getName(),bean.getPay()};
+		jdbcTemplate.update(sql,obj);
+	}
+
 }
 
 

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>입력 페이지</h1>
-	<form action="insert.do">
+	<form action="insert.hb">
 	<table>
 		<tr>
 			<td>sabun</td>	

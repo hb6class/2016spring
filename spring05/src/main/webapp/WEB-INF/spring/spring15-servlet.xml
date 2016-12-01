@@ -8,6 +8,8 @@
 		<props>
 			<prop key="/test.hb">test</prop>
 			<prop key="/list.hb">list</prop>
+			<prop key="/add.hb">add</prop>
+			<prop key="/insert.hb">insert</prop>
 		</props>
 	</property>
 </bean>
@@ -17,6 +19,14 @@
 </bean>
 
 <bean id="list" class="com.hb.controller.ListController">
+	<property name="dao" ref="dao2"/>
+</bean>
+<bean id="add" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+	<property name="viewName" value="guest/form"></property>
+</bean>
+<bean id="insert" 
+class="com.hb.controller.InsertController">
+	<property name="commandClass" value="com.dodo.model.GuestVo"/>
 	<property name="dao" ref="dao2"/>
 </bean>
 

@@ -9,9 +9,7 @@
 </head>
 <body>
 <div>
-<c:if test="${loginGo }">
-	<p><a href="../login.do">로그인 페이지</a></p>
-</c:if>
+
 </div>
 	<h1>list page</h1>
 	<table>
@@ -31,9 +29,9 @@
 	</c:forEach>
 	
 	</table>
-	<c:if test="${loginOk}">
-		<p><a href="add.do">입력</a></p>
-	</c:if>
+
+		<p><a href="add.hb">입력</a></p>
+
 </body>
 </html>
 
