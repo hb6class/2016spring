@@ -15,13 +15,10 @@ import com.dodo.model.GuestVo;
 
 public class GuestDao {
 	private JdbcTemplate jdbcTemplate;
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
-
-	public List<GuestVo> selectAll() {
-		String sql="select * from guest";
-		RowMapper<GuestVo> rowMapper=new RowMapper<GuestVo>() {
+	private RowMapper<GuestVo> rowMapper;
+	
+	public GuestDao() {
+		rowMapper=new RowMapper<GuestVo>() {
 
 			@Override
 			public GuestVo mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -34,6 +31,14 @@ public class GuestDao {
 				return bean;
 			}
 		};
+	}
+	
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+
+	public List<GuestVo> selectAll() {
+		String sql="select * from guest";
 		List list = jdbcTemplate.query(sql, rowMapper);
 		return list;
 	}
@@ -60,19 +65,6 @@ public class GuestDao {
 	public GuestVo selectOne(int sabun) {
 		String sql="select * from guest where sabun=?";
 		Object[] obj={sabun};
-		RowMapper<GuestVo> rowMapper=new RowMapper<GuestVo>() {
-
-			@Override
-			public GuestVo mapRow(ResultSet rs, int rowNum) throws SQLException {
-				GuestVo bean = new GuestVo(
-						rs.getInt("sabun")
-						,rs.getString("name")
-						,rs.getDate("nalja")
-						,rs.getInt("pay")
-						);
-				return bean;
-			}
-		};
 		return jdbcTemplate.queryForObject(sql, obj, rowMapper);
 	}
 	
