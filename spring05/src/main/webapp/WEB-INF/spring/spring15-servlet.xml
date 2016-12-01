@@ -16,8 +16,8 @@
 	<property name="viewName" value="hb"/>
 </bean>
 
-<bean id="list" class="com.dodo.controller.ListController">
-	<property name="dao" ref="dao"/>
+<bean id="list" class="com.hb.controller.ListController">
+	<property name="dao" ref="dao2"/>
 </bean>
 
 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

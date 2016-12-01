@@ -27,12 +27,8 @@ public class GuestDao {
 			pstmt=conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()){
-				list.add(new GuestVo(
-						rs.getInt("sabun")
-						, rs.getString("name")
-						, rs.getDate("nalja")
-						, rs.getInt("pay")
-						));
+				GuestVo bean=mapRow(rs);
+				list.add(bean);
 			}
 		}finally{
 			if(rs!=null)rs.close();
@@ -40,6 +36,16 @@ public class GuestDao {
 			if(conn!=null)conn.close();
 		}
 		return list;
+	}
+
+	private GuestVo mapRow(ResultSet rs) throws SQLException {
+		GuestVo bean=new GuestVo(
+				rs.getInt("sabun")
+				, rs.getString("name")
+				, rs.getDate("nalja")
+				, rs.getInt("pay")
+				);
+		return bean;
 	}
 }
 
