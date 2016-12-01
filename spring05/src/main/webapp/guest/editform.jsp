@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>수정 페이지</h1>
-	<form action="update.do" method="post">
+	<form action="update.hb" method="post">
 		<p>
 			<label for="sabun">sabun</label>
 			<input type="text" name="sabun" id="sabun" value="${dto.sabun }"/>

@@ -21,7 +21,7 @@ public class GuestDao {
 
 	public List<GuestVo> selectAll() {
 		String sql="select * from guest";
-		RowMapper<GuestVo> mapper=new RowMapper<GuestVo>() {
+		RowMapper<GuestVo> rowMapper=new RowMapper<GuestVo>() {
 
 			@Override
 			public GuestVo mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -34,7 +34,7 @@ public class GuestDao {
 				return bean;
 			}
 		};
-		List list = jdbcTemplate.query(sql, mapper);
+		List list = jdbcTemplate.query(sql, rowMapper);
 		return list;
 	}
 
@@ -55,6 +55,25 @@ public class GuestDao {
 		String sql="delete from guest where sabun=?";
 		Object[] obj={sabun};
 		return jdbcTemplate.update(sql,obj);
+	}
+
+	public GuestVo selectOne(int sabun) {
+		String sql="select * from guest where sabun=?";
+		Object[] obj={sabun};
+		RowMapper<GuestVo> rowMapper=new RowMapper<GuestVo>() {
+
+			@Override
+			public GuestVo mapRow(ResultSet rs, int rowNum) throws SQLException {
+				GuestVo bean = new GuestVo(
+						rs.getInt("sabun")
+						,rs.getString("name")
+						,rs.getDate("nalja")
+						,rs.getInt("pay")
+						);
+				return bean;
+			}
+		};
+		return jdbcTemplate.queryForObject(sql, obj, rowMapper);
 	}
 	
 }

@@ -27,8 +27,8 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<a href="edit.do?idx=${dto.sabun }">수정</a>
-				<a href="del.do?idx=${dto.sabun }">삭제</a>
+				<a href="edit.hb?idx=${dto.sabun }">수정</a>
+				<a href="del.hb?idx=${dto.sabun }">삭제</a>
 			</td>
 		</tr>
 	</table>

@@ -10,6 +10,10 @@
 			<prop key="/list.hb">list</prop>
 			<prop key="/add.hb">add</prop>
 			<prop key="/insert.hb">insert</prop>
+			<prop key="/detail.hb">detail</prop>
+			<prop key="/edit.hb">edit</prop>
+			<prop key="/update.hb">update</prop>
+			<prop key="/del.hb">delete</prop>
 		</props>
 	</property>
 </bean>
@@ -28,6 +32,21 @@
 class="com.hb.controller.InsertController">
 	<property name="commandClass" value="com.dodo.model.GuestVo"/>
 	<property name="dao" ref="dao2"/>
+</bean>
+<bean id="detail" class="com.hb.controller.DetailController">
+	<property name="dao" ref="dao2"/>	
+	<property name="path" value="detail"/>
+</bean>
+<bean id="edit" class="com.hb.controller.DetailController">
+	<property name="dao" ref="dao2"/>	
+	<property name="path" value="editform"/>
+</bean>
+<bean name="update" class="com.hb.controller.UpdateController">
+	<property name="commandClass" value="com.dodo.model.GuestVo"/>
+	<property name="dao" ref="dao2"/>	
+</bean>
+<bean name="delete" class="com.hb.controller.DeleteController">
+	<property name="dao" ref="dao2"/>	
 </bean>
 
 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
