@@ -18,7 +18,7 @@ public class ListController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView("guest/list");
-		
+		mav.addObject("alist", dao.selectAll());
 		return mav;
 	}
 
