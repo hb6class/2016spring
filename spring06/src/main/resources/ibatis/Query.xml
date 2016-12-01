@@ -5,5 +5,27 @@
 	<select id="selectAll" resultClass="com.hb.model.GuestVo">
 	SELECT * FROM GUEST ORDER BY SABUN
 	</select>
-
+	<insert id="insertOne" parameterClass="com.hb.model.GuestVo">
+	insert into guest values (#sabun#,#name#,sysdate,#pay#)
+	</insert>
+	<select id="selectOne" parameterClass="int" resultClass="com.hb.model.GuestVo">
+	select * from guest where sabun=#value#
+	</select>
+	<update id="updateOne" parameterClass="com.hb.model.GuestVo">
+	update guest set name=#name#,pay=#pay# where sabun=#sabun#
+	</update>
+	<delete id="deleteOne" parameterClass="int">
+	delete from guest where sabun=#value#
+	</delete>
 </sqlMap>
+
+
+
+
+
+
+
+
+
+
+

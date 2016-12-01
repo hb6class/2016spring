@@ -12,6 +12,28 @@
 	<bean name="/list.hb" class="com.hb.controller.ListController">
 		<property name="dao" ref="dao"/>
 	</bean>
+	<bean name="/add.hb" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="guest/form"/>
+	</bean>
+	<bean name="/insert.hb" class="com.hb.controller.InsertController">
+		<property name="commandClass" value="com.hb.model.GuestVo"/>
+		<property name="dao" ref="dao"/>
+	</bean>
+	<bean name="/detail.hb" class="com.hb.controller.DetailController">
+		<property name="path" value="detail"/>		
+		<property name="dao" ref="dao"/>
+	</bean>
+	<bean name="/edit.hb" class="com.hb.controller.DetailController">
+		<property name="path" value="editform"/>		
+		<property name="dao" ref="dao"/>
+	</bean>
+	<bean name="/update.hb" class="com.hb.controller.UpdateController">
+		<property name="commandClass" value="com.hb.model.GuestVo"/>
+		<property name="dao" ref="dao"/>
+	</bean>
+	<bean name="/del.hb" class="com.hb.controller.DeleteController">
+		<property name="dao" ref="dao"/>
+	</bean>
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/"/>
